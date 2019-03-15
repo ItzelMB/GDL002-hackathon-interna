@@ -1,64 +1,63 @@
-# "Hackathon" de final de _Common Core_, películas
+## "Hackathon" de final de Common Core, películas.
 
-## Índice
+# MarvelPEDIA
 
-- [Preámbulo](#preámbulo)
-- [Resumen del proyecto](#resumen-del-proyecto)
-- [Consideraciones generales](#consideraciones-generales)
-- [Objetivos de aprendizaje](#objetivos-de-aprendizaje)
-- [Parte obligatoria](#parte-obligatoria)
-- [Consideraciones técnicas](#consideraciones-técnicas)
+En 2008 la productora Marvel Studios realizó Iron Man, primera película del universo Marvel y desde entonces no ha parado de estrenar películas. 
+Todas estas películas tienen continuidad entre ellas, están enlazadas, y los sucesos que ocurren en ellas tienen repercusión en las siguientes, todo esto ha causado una gran popularidad entre fans y no fans de los cómics en los que se basan las historias, aunque por otra parte, existen también las personas que debido a la popularidad reconocen el Universo Cinematográfico de Marvel (MCU por sus siglas en inglés), pero no tienen la motivación o medios para adentrarse en este mundo. Es entonces que surge "MarveLPEDIA" como un medio para adentrar a los usuarios interesados al MCU de una manera sencilla e intuitiva.
+
+
+## Usuario principal
+MarvelPEDIA se dirige a hombres y mujeres de entre 15 y 40 años que hablan inglés, tienen gusto por el uso de la tecnología, que gustan de las películas de acción, superhéroes o ciencia ficción, que no conocen del MCU y que están interesados en adentrarse en este mundo cinematográfico.
+
+
+## El objetivo y descripción del sitio MarvelPEDIA
+El objetivo de MArvelPEDIA es apoyar a los usuarios para adentrarse al universo cinematrografico de Marvel, esto a través de presentarle el ordenado cronológico en que transcurren las historias de las películas y mostrarle otras opciones para interactuar; una de ellas es el filtrado por actor en donde el usuario podrá visualizar las películas en donde aparece su actor preferido, otra opción que el usuario encontrará es que: al hacer click sobre la película deseada se mostrará información básica, tales como: el trailer, el ranking, comentarios de personas que han visto las películas y sugerencias de plataformas para poder ver la película que desea.
+
+También se integra una sección en el sitio en donde se mostrará en una pantalla la linea del tiempo con la información general del cómo surge Marvel para contextualizar al usuario sobre la historia del MCU. Y por otra parte para atraer aún más al usuario se presenta una sección en donde se presentan curiosidades sobre los personajes, específicamente la evolución de los trajes de los superhéroes a través de los años y las diferentes películas.
 
 ---
+## Prototipo de baja fidelidad
+Para la realización del sitio web se generaron prototipos de baja fidelidad para ser testeados por algunos usuarios.
 
-## Preámbulo
 
-Con la aparición de plataformas para ver películas en la nube, como Netflix o
-Amazon Prime Video, ver películas desde donde estés, comiendo lo que quieras
-(sin tener que pagar precios ridículos por palomitas), parando si es necesario, teniendo acceso a una cantidad
-abrumadora de películas... ha cambiado la experiencia del usuario
-y modificado el mercado de las películas a nivel global.
+- Para desktop
 
-![Pelis](https://media.giphy.com/media/NipFetnQOuKhW/giphy.gif)
+![Tablet baja fidelidad](img/tablet1.jpg)
 
-## Resumen del proyecto
+![Celular baja fidelidad](/img/tablet2.jpg)
 
-Durante estos días crearás el producto que quieras alrededor del mundo
-de las películas. Puede ser un sitio que hable de las mejores películas
-latinoamericanas, uno que recomiende las películas recién estrenadas en algún servicio de streaming, uno de recomendaciones de películas de terror,
-comedia ... o... ¡lo que quieran!
+- Para celular
 
-## Consideraciones generales
+![Celular baja fidelidad](/img/Celular1.jpg)
 
-- Este proyecto se debe resolver en equipos de hasta 4 personas y uno de 3.
-- Usa la API de [OMDB](http://www.omdbapi.com/) (The Open Movie Database).
-- Tiempo para completar el reto: 3 días.
-- Habrán dos presentaciones, una a la mitad de la _hackathon_ y otra al final.
+![Celular baja fidelidad](/img/Celular2.jpg)
 
-## Objetivos de aprendizaje
+![Celular baja fidelidad](/img/Celular3.jpg)
 
-- Enfrentarte a un reto de corta duración en el que pongas
-  en práctica todo lo aprendido hasta ahora.
-- Que sigas desarrollando tus habilidades de trabajo en equipo. Mientras más
-  personas en un equipo de trabajo, mayor complejidad para: tener un
-  entendimiento común, seguir el flujo de trabajo, buscar consensos, etc.
+---
+## Prototipo de alta fidelidad
+Luego de test con usuarios se realizaron prototipos en alta fidelidad que contienen los cambios y observaciones arrojadas por ellos.
 
-## Parte Obligatoria
+- [Para desktop](https://www.figma.com/file/Lgq0bPe2k9Sf3fNqz2JAVMrO/MarvelPEDIA-desktop)
 
-- Todo el planeamiento del trabajo deberá ser detallado en un repositorio único
-  por _squad_ en el que se presente el _planning_, el _research_, los _sketches_
-  y las inspiraciones utilizadas para definir el producto.
-- Además, deberás detallar en el archivo _readme_, qué hizo cada una en el
-  proyecto.
-- El producto deberá presentarse publicado en github pages.
+- [Para celular](https://www.figma.com/file/SjLjy69Qh62TuJAvXTe7VTMl/MarvelPEDIA-responsive-mobile)
+---
+## El Trabajo en equipo
+El trabajo en equipo fue organizado mayormente en tareas cuya responsabilidad fue asignada de acuerdo a gustos y habilidades de las integrantes del equipo, quedando la organización de la manera siguiente:
 
-## Consideraciones técnicas
+### *Iris y Lucero:
+- Entrevistas para el estudio de mercado a diferentes usuarios.
+- Planeación del proyecto e historias de usuario.
+- Prototipo de baja fidelidad (Sketch). 
+- Prototipo de alta fidelidad en figma.
+- Desarrollo de pantallas (Home, movies, super suit, story) en html, css y js.
 
-- El diseño visual de los componentes es de libre elección.
-- Pueden usar algún framework de css si así lo deciden.
+### *Mel e Itzel:
+- Entrevistas para el estudio de mercado a diferentes usuarios.
+- Planeación del proyecto e historias de usuario.
+- Prototipo de baja fidelidad (Sketch). 
+- Prototipo de alta fidelidad en figma.
+- Desarrollo de funcionalidad en js de orden de las peliculas y filtro por actor.
+- Desarrollo funcional del modal para mostrar pantalla con información básica de la película, trailer, ranking y comentarios.
 
-## Sobre las presentaciones
-
-- Cada squad tendrá 5 minutos para presentar y 5 minutos para recibir preguntas.
-
-- Las personas que presentan en la primera presentación no deben ser las mismas de la presentación final.
+--- 
