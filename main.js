@@ -1,3 +1,27 @@
+const urlVideos = [
+    ['tt0458339','https://www.youtube.com/embed/mGqYQog6biY'],
+    ['tt4154664','https://www.youtube.com/embed/Z1BCujX3pw8'],
+    ['tt0371746','https://www.youtube.com/embed/8hYlB38asDY'],
+    ['tt1228705', ],
+    ['tt0800080', ],
+    ['tt0800369', ],
+    ['tt0848228', ],
+    ['tt1300854', ],
+    ['tt1981115', ],
+    ['tt1843866', ],
+    ['tt2015381', ],
+    ['tt3896198', ],
+    ['tt2395427', ],
+    ['tt0478970', ],
+    ['tt3498820', ],
+    ['tt2250912', ],
+    ['tt1211837', ],
+    ['tt1825683', ],
+    ['tt3501632', ],
+    ['tt5095030', ],
+    ['tt4154756', ]
+];
+
 const createNode = (element) => {
     return document.createElement(element);
 };
@@ -9,6 +33,7 @@ const displayMovies = (data) => {
     let div = createNode("div");
     let img = createNode("img");
     let span = createNode("span");
+    div.setAttribute('class', 'poster');
     img.src = data.Poster;
     img.setAttribute('id', data.imdbID);
     img.addEventListener('click', showInfoModal);
@@ -16,9 +41,6 @@ const displayMovies = (data) => {
     appendNode(div, img);
     appendNode(div, span);
     appendNode(mainDiv, div);
-
-    
-
 };
 const removeChild = (parent) => {
     const parentElement = document.getElementById(parent);
@@ -27,7 +49,7 @@ const removeChild = (parent) => {
     };
 }
 const url = "http://www.omdbapi.com/?apikey="
-const apikey = "8f24c86a&";
+const apikey = "8f24c86a";
 const movies = [
     "t=captain+america&y=2011",
     "t=captain+marvel",
@@ -55,7 +77,7 @@ const movies = [
 async function displayAllMovies() {
     removeChild("moviesDiv");
     for (let i = 0; i < movies.length; i++) {
-        let resp = await fetch(url + apikey + movies[i]);
+        let resp = await fetch(url + apikey +'&'+ movies[i]);
         let data = await resp.json();
         displayMovies(data);
     }
@@ -65,7 +87,7 @@ displayAllMovies();
 async function displayFilteredMovies(character) {
     removeChild("moviesDiv");
     for (let i = 0; i < movies.length; i++) {
-        let resp = await fetch(url + apikey + movies[i]);
+        let resp = await fetch(url + apikey + '&' + movies[i]);
         let data = await resp.json();
         if(data.Actors.includes(character)){
             await displayMovies(data);
@@ -85,7 +107,7 @@ document.getElementById("actors").addEventListener("change", selectActor);
 //Crear modal con info de pelis
 const showInfoModal = () => {
     let id = this.event.target.id;
-    fetch("http://www.omdbapi.com/?apikey="+apiKey+"&i="+id)
+    fetch(url + apikey +"&i="+id)
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -102,15 +124,8 @@ const showInfoModal = () => {
         let createTitle = document.createElement('h2');
         let title = document.createTextNode(data.Title);
         createTitle.appendChild(title);
+       
         
-        //Agregar video
-        /*let createVideo = document.createElement('iframe');
-        createVideo.setAttribute('width', '560');
-        createVideo.setAttribute('height', '315');
-        createVideo.setAttribute('src', videos[0]); //indice
-        createVideo.setAttribute('frameborder', '0');
-        createVideo.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
-        createVideo.setAttribute('allowfullscreen');*/
 
         //Agregar director
         let createDirector = document.createElement('p');
@@ -127,7 +142,23 @@ const showInfoModal = () => {
         let rating = document.createTextNode('IMDB Rating: ' + data.imdbRating);
         createRating.appendChild(rating);
 
+        //Orden de elementos en contenedor
         modalContent.appendChild(createTitle);
+
+        //Agregar video
+         urlVideos.map( videoSource =>{
+            if(videoSource[0]===id){
+                let createVideo = document.createElement('iframe');
+                createVideo.setAttribute('width', '560');
+                createVideo.setAttribute('height', '315');
+                createVideo.setAttribute('src', videoSource[1]);
+                createVideo.setAttribute('frameborder', '0');
+                createVideo.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+                //createVideo.setAttribute('allowfullscreen');
+                modalContent.appendChild(createVideo);
+            }
+        }, id, modalContent);
+
         modalContent.appendChild(createDirector);
         modalContent.appendChild(createPlot);
         modalContent.appendChild(createRating);  
