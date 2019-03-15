@@ -46,12 +46,37 @@ const whereToWatch = [
     ['tt4154756', 'STREAMING: Netflix.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube']
 ];
 
+const reviews = [ 
+    ['tt0458339','https://www.imdb.com/title/tt0458339/reviews?ref_=tt_ql_3'],
+    ['tt4154664','https://www.imdb.com/title/tt4154664/reviews?ref_=tt_ql_3'],
+    ['tt0371746','https://www.imdb.com/title/tt0371746/reviews?ref_=tt_ql_3'],
+    ['tt1228705', 'https://www.imdb.com/title/tt1228705/reviews?ref_=tt_ql_3'],
+    ['tt0800080', 'https://www.imdb.com/title/tt0800080/reviews?ref_=tt_ql_3'],
+    ['tt0800369', 'https://www.imdb.com/title/tt0800369/reviews?ref_=tt_ql_3'],
+    ['tt0848228', 'https://www.imdb.com/title/tt0848228/reviews?ref_=tt_ql_3'],
+    ['tt1300854', 'https://www.imdb.com/title/tt1300854/reviews?ref_=tt_ql_3'],
+    ['tt1981115', 'https://www.imdb.com/title/tt1981115/reviews?ref_=tt_ql_3'],
+    ['tt1843866', 'https://www.imdb.com/title/tt1843866/reviews?ref_=tt_ql_3'],
+    ['tt2015381', 'https://www.imdb.com/title/tt2015381/reviews?ref_=tt_ql_3'],
+    ['tt3896198', 'https://www.imdb.com/title/tt3896198/reviews?ref_=tt_ql_3'],
+    ['tt2395427', 'https://www.imdb.com/title/tt2395427/reviews?ref_=tt_ql_3'],
+    ['tt0478970', 'https://www.imdb.com/title/tt0478970/reviews?ref_=tt_ql_3'],
+    ['tt3498820', 'https://www.imdb.com/title/tt3498820/reviews?ref_=tt_ql_3'],
+    ['tt2250912', 'https://www.imdb.com/title/tt2250912/reviews?ref_=tt_ql_3'],
+    ['tt1211837', 'https://www.imdb.com/title/tt1211837/reviews?ref_=tt_ql_3'],
+    ['tt1825683', 'https://www.imdb.com/title/tt1825683/reviews?ref_=tt_ql_3'],
+    ['tt3501632', 'https://www.imdb.com/title/tt3501632/reviews?ref_=tt_ql_3'],
+    ['tt5095030', 'https://www.imdb.com/title/tt5095030/reviews?ref_=tt_ql_3'],
+    ['tt4154756', 'https://www.imdb.com/title/tt4154756/reviews?ref_=tt_ql_3']
+];
+
 const createNode = (element) => {
     return document.createElement(element);
 };
 const appendNode = (parent, element) => {
     return parent.appendChild(element);
 };
+
 const displayMovies = (data) => {
     const mainDiv = document.getElementById("moviesDiv");
     let div = createNode("div");
@@ -184,12 +209,25 @@ const showInfoModal = () => {
         modalContent.appendChild(createDirector);
         modalContent.appendChild(createPlot);
         modalContent.appendChild(createRating);
+
+        //Añadir links de comentarios
+        reviews.map( usersComments =>{
+            if(usersComments[0]===id){
+                let createLink = document.createElement('a');
+                createLink.setAttribute('href', usersComments[1]);
+                createLink.setAttribute('class', 'linkStyle');
+                let createLinkText = document.createTextNode('GO TO REVIEWS');
+                createLink.append(createLinkText);
+
+                modalContent.appendChild(createLink);
+            }
+        }, id, modalContent);
         
         //Agregar plataformas para ver pelis
         whereToWatch.map( platformsToWatch =>{
             if(platformsToWatch[0]===id){
                 let createPlatformsA = document.createElement('p');
-                createPlatformsA.setAttribute('class', 'highlight');
+                //createPlatformsA.setAttribute('class', 'highlight');
                 let platforms = document.createTextNode('WATCH IT IN');
                 createPlatformsA.appendChild(platforms);
                 

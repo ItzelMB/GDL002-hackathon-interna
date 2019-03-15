@@ -25,3 +25,8 @@
     font-size: 1.5rem;
     color: red;
 }
+
+.linkStyle {
+    color: rgb(1, 1, 100);
+    text-decoration: none;
+}
