@@ -10,10 +10,15 @@ const displayMovies = (data) => {
     let img = createNode("img");
     let span = createNode("span");
     img.src = data.Poster;
+    img.setAttribute('id', data.imdbID);
+    img.addEventListener('click', showInfoModal);
     span.innerHTML = data.Title;
     appendNode(div, img);
     appendNode(div, span);
     appendNode(mainDiv, div);
+
+    
+
 };
 const removeChild = (parent) => {
     const parentElement = document.getElementById(parent);
@@ -75,3 +80,64 @@ const selectActor = () => {
 }
 
 document.getElementById("actors").addEventListener("change", selectActor);
+
+
+//Crear modal con info de pelis
+const showInfoModal = () => {
+    let id = this.event.target.id;
+    fetch("http://www.omdbapi.com/?apikey="+apiKey+"&i="+id)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        let modal = document.getElementById('modal');
+        modal.style.display = 'block';
+
+        let modalContent = document.getElementById('modalContainer');
+        //reiniciar la creación de elementos en modal
+        while (modalContent.hasChildNodes()) {
+            modalContent.removeChild(modalContent.firstChild);
+        }
+
+        //Agregar título de peli
+        let createTitle = document.createElement('h2');
+        let title = document.createTextNode(data.Title);
+        createTitle.appendChild(title);
+        
+        //Agregar video
+        /*let createVideo = document.createElement('iframe');
+        createVideo.setAttribute('width', '560');
+        createVideo.setAttribute('height', '315');
+        createVideo.setAttribute('src', videos[0]); //indice
+        createVideo.setAttribute('frameborder', '0');
+        createVideo.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+        createVideo.setAttribute('allowfullscreen');*/
+
+        //Agregar director
+        let createDirector = document.createElement('p');
+        let director = document.createTextNode('DIRECTOR: ' + data.Director);
+        createDirector.appendChild(director);
+        
+        //Agregar plot
+        let createPlot = document.createElement('p');
+        let plot = document.createTextNode('PLOT: ' + data.Plot);
+        createPlot.appendChild(plot);
+
+        //Agregar puntuación
+        let createRating = document.createElement('p');
+        let rating = document.createTextNode('IMDB Rating: ' + data.imdbRating);
+        createRating.appendChild(rating);
+
+        modalContent.appendChild(createTitle);
+        modalContent.appendChild(createDirector);
+        modalContent.appendChild(createPlot);
+        modalContent.appendChild(createRating);  
+     })
+};
+
+//cerrar modal
+window.onclick = (event) => {
+    let modal = document.getElementById('modal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+};
