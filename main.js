@@ -22,6 +22,30 @@ const urlVideos = [
     ['tt4154756', 'https://www.youtube.com/embed/6ZfuNTqbHE8']
 ];
 
+const whereToWatch = [
+    ['tt0458339','STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt4154664','STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt0371746','STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt1228705', 'STREAMING: Amazon Prime, Hulu.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt0800080', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt0800369', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt0848228', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt1300854', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt1981115', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt1843866', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt2015381', 'STREAMING: FX until abril', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt3896198', 'STREAMING: Netflix.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt2395427', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt0478970', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt3498820', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt2250912', 'STREAMING: Starz until july', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt1211837', 'STREAMING: No.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt1825683', 'STREAMING: Netflix.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt3501632', 'STREAMING: Netflix.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt5095030', 'STREAMING: Netflix.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube'],
+    ['tt4154756', 'STREAMING: Netflix.', 'BUY/RENT: Amazon; Google Play; iTunes; Vudu; Youtube']
+];
+
 const createNode = (element) => {
     return document.createElement(element);
 };
@@ -124,8 +148,6 @@ const showInfoModal = () => {
         let createTitle = document.createElement('h2');
         let title = document.createTextNode(data.Title);
         createTitle.appendChild(title);
-       
-        
 
         //Agregar director
         let createDirector = document.createElement('p');
@@ -149,8 +171,8 @@ const showInfoModal = () => {
          urlVideos.map( videoSource =>{
             if(videoSource[0]===id){
                 let createVideo = document.createElement('iframe');
-                createVideo.setAttribute('width', '560');
-                createVideo.setAttribute('height', '315');
+                createVideo.setAttribute('width', '500');
+                createVideo.setAttribute('height', '285');
                 createVideo.setAttribute('src', videoSource[1]);
                 createVideo.setAttribute('frameborder', '0');
                 createVideo.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
@@ -161,7 +183,32 @@ const showInfoModal = () => {
 
         modalContent.appendChild(createDirector);
         modalContent.appendChild(createPlot);
-        modalContent.appendChild(createRating);  
+        modalContent.appendChild(createRating);
+        
+        //Agregar plataformas para ver pelis
+        whereToWatch.map( platformsToWatch =>{
+            if(platformsToWatch[0]===id){
+                let createPlatformsA = document.createElement('p');
+                createPlatformsA.setAttribute('class', 'highlight');
+                let platforms = document.createTextNode('WATCH IT IN');
+                createPlatformsA.appendChild(platforms);
+                
+                let createPlatformsB = document.createElement('p');
+                createPlatformsB.setAttribute('class', 'highlight');
+                let platformsB= document.createTextNode(platformsToWatch[1]);
+                createPlatformsB.appendChild(platformsB);
+
+                let createPlatformsC = document.createElement('p');
+                createPlatformsC.setAttribute('class', 'highlight');
+                let platformsC= document.createTextNode(platformsToWatch[2]);
+                createPlatformsC.appendChild(platformsC);
+
+                modalContent.appendChild(createPlatformsA);
+                modalContent.appendChild(createPlatformsB);
+                modalContent.appendChild(createPlatformsC);
+            }
+        }, id, modalContent);
+        
      })
 };
 
