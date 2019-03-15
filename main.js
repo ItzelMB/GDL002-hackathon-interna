@@ -170,6 +170,7 @@ const showInfoModal = () => {
 
             //Agregar título de peli
             let createTitle = document.createElement('h2');
+            createTitle.setAttribute("class", "titleModal")
             let title = document.createTextNode(data.Title);
             createTitle.appendChild(title);
 
